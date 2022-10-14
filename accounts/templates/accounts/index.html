@@ -13,7 +13,7 @@
       <tr>
         <th scope='row'>{{ user.id }}</th>
         <td>
-          <a href='' class="text-decoration-none text-dark fw-bold">{{ user.username }}</a>
+          <a href='{% url 'accounts:detail' user.pk %}' class="text-decoration-none text-dark fw-bold">{{ user.username }}</a>
         </td>
       </tr>
       {% endfor %}

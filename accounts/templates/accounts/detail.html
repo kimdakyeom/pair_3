@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>회원 이름: {{ user.username }}</p>
+<p>가입 시간: {{ user.date_joined }}</p>
+<a href="" class="btn btn-dark">수정</a>
+<a href="" class="btn btn-danger">탈퇴</a>
+{% endblock %}
