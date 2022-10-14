@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th scope='col'>회원번호</th>
+        <th scope='col'>회원 성명</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <th scope='row'>{{ user.id }}</th>
+        <td>
+          <a href='' class="text-decoration-none text-dark fw-bold">{{ user.username }}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
