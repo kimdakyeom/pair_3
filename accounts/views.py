@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
-
+@login_required
 def index(request):
     users = get_user_model().objects.all()
 
@@ -32,12 +32,13 @@ def signup(request):
 
     return render(request,'accounts/signup.html',context)
 
+
 def login(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect('accounts:index')
+            return redirect(request.GET.get('next') or 'accounts:index')
     else:
         form = AuthenticationForm()
     context = {

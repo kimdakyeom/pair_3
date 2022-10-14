@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="container">
+    <div class="m-5">
+        <div class="d-flex justify-content-center">
+            <table class="table text-center align-middle" style="width: 100%;">
+                <thead>
+                    <tr class="p-3 mb-2 bg-dark text-white text-center">
+                        <th scope="col">번호</th>
+                        <th scope="col">리뷰제목</th>
+                        <th scope="col">영화이름</th>
+                        <!-- <th scope="col">작성자</th> -->
+                        <th scope="col">작성/수정시간</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for review in reviews %}
+                    <tr class="text-center">
+                        <td scope="row">{{ review.pk }}</td>
+                        <td>
+                            <a href="" class="text-decoration-none text-dark fw-bold">{{ review.title }}</a>
+                        </td>
+                        <td>{{ review.movie_name }}</td>
+                        <!-- <td>{{ review.author }}</td> -->
+                        <td>{{ review.updated_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a class='btn btn-dark' href="{% url 'reviews:create' %}">작성</a>
+    </div>
+</div>
+{% endblock %}
