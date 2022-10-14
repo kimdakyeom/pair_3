@@ -5,13 +5,15 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+
 def index(request):
-    reviews = Review.objects.order_by('-pk')
+    reviews = Review.objects.order_by("-pk")
     context = {
-        'reviews' : reviews,
+        "reviews": reviews,
     }
 
-    return render(request, 'reviews/index.html', context)
+    return render(request, "reviews/index.html", context)
+
 
 @login_required
 def create(request):
@@ -19,10 +21,18 @@ def create(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('reviews:index')
+            return redirect("reviews:index")
     else:
         form = ReviewForm()
     context = {
         "form": form,
     }
     return render(request, "reviews/create.html", context)
+
+
+def detail(request, pk):
+    review = Review.objects.get(pk=pk)
+    context = {
+        "review": review,
+    }
+    return render(request, "reviews/detail.html", context)
