@@ -3,5 +3,5 @@
 <p>회원 이름: {{ user.username }}</p>
 <p>가입 시간: {{ user.date_joined }}</p>
 <a href="{% url 'accounts:update' request.user.pk %}" class="btn btn-dark">수정</a>
-<a href="" class="btn btn-danger">탈퇴</a>
+<a href="{% url 'accounts:delete' %}" class="btn btn-danger">탈퇴</a>
 {% endblock %}
