@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% load django_bootstrap5 %} {% block content %}
+<h1>글 보기</h1>
+<p>글 제목 | {{ review.title }}</p>
+<p>글 내용 | {{ review.content }}</p>
+<p>영화 제목 | {{ review.movie_name }}</p>
+<p>영화 평점 | {{ review.grade }}</p>
+<p>작성 시간 | {{ review.updated_at }}</p>
+
+{% endblock %}
