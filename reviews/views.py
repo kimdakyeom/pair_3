@@ -20,7 +20,9 @@ def create(request):
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect("reviews:index")
     else:
         form = ReviewForm()
@@ -53,8 +55,9 @@ def update(request, pk):
     }
     return render(request, "reviews/update.html", context)
 
+
 @login_required
 def delete(request, pk):
     reviews = Review.objects.get(pk=pk)
     reviews.delete()
-    return redirect('reviews:index')
+    return redirect("reviews:index")
